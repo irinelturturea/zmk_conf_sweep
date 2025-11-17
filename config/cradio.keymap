@@ -11,6 +11,15 @@
 };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        toggle_nav {
+            bindings = <&tog 2>;
+            key-positions = <11 12 13>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
