@@ -47,10 +47,10 @@
         function_layer {
             display-name = "Function Layer";
             bindings = <
-&bt BT_CLR_ALL  &trans  &bt BT_SEL 0  &bt BT_SEL 1  &tog 1    &trans   &trans    &trans    &trans  &trans
-&trans          &trans  &trans        &trans        &trans    &trans   &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT
-&trans          &trans  &trans        &trans        &trans    &trans   &trans    &trans    &trans  &trans
-                                      &kp DEL       &none     &kp RET  &trans
+&bt BT_CLR_ALL  &trans    &bt BT_SEL 0    &bt BT_SEL 1  &tog 1    &trans   &trans    &trans    &trans  &trans
+&trans          &trans    &kp UP_ARROW    &trans        &tog 3    &trans   &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT
+&trans          &kp LEFT  &kp DOWN_ARROW  &kp RIGHT     &trans    &trans   &trans    &trans    &trans  &trans
+                                          &kp DEL       &none     &kp RET  &trans
             >;
         };
 
