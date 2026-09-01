@@ -25,6 +25,12 @@
             bindings = <&tog 1>;
             key-positions = <6 7 8 9>;
         };
+
+        // 4 thumbs = toggle layer 5 (BT) — intrare deliberata, aproape imposibil accidental
+        toggle_bt {
+            bindings = <&tog 5>;
+            key-positions = <30 31 32 33>;
+        };
     };
 
     keymap {
@@ -53,12 +59,11 @@
         function_layer {
             display-name = "Function Layer";
             bindings = <
-&bt BT_CLR_ALL  &none    &bt BT_SEL 0    &bt BT_SEL 1   &none     &none   &none    &none    &none  &none
-&none           &none    &kp UP_ARROW    &none          &none     &none   &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT
-&none           &kp LEFT  &kp DOWN_ARROW  &kp RIGHT     &none     &none   &none    &none    &none  &none
-                                          &kp DEL       &none     &kp RET  &none
-            >;
-        };
+&none           &none     &none           &none         &none    &none   &none    &none    &none  &none
+&none           &none     &kp UP_ARROW    &none         &none    &none   &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT
+&none           &kp LEFT  &kp DOWN_ARROW  &kp RIGHT     &none    &none   &none    &none    &none  &none
+                                          &kp DEL       &none    &kp RET  &none
+
 
         symbol_layer {
             display-name = "Symbol Layer";
@@ -77,6 +82,16 @@
 &kp F5  &kp F6   &kp F7   &kp F8   &trans     &kp SEMI          &kp N4    &kp N5  &kp N6  &kp N0
 &kp F1  &kp F2   &kp F3   &kp F4   &trans     &kp LEFT_BRACKET  &kp N1    &kp N2  &kp N3  &trans
                           &trans   &kp RET    &none             &kp BSPC
+            >;
+        };
+
+        bt_layer {
+            display-name = "Bluetooth Layer";
+            bindings = <
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &none    &none   &none    &none    &none  &none
+&none         &none         &none         &none         &none    &none   &none    &none    &none  &none
+&none         &none         &bt BT_NXT    &bt BT_PRV    &none    &none   &none    &none    &none  &none
+                                            &none         &none     &bt BT_CLR_ALL  &none
             >;
         };
     };
