@@ -14,9 +14,16 @@
     combos {
         compatible = "zmk,combos";
 
+        // QWFP (stanga, top row) = toggle layer 2 (nav/arrows) — 50ms default timeout
         toggle_nav {
             bindings = <&tog 2>;
-            key-positions = <11 12 13>;
+            key-positions = <0 1 2 3>;
+        };
+
+        // L U Z , (dreapta, top row, oglinda QWFP) = toggle qwertz
+        toggle_qwertz {
+            bindings = <&tog 1>;
+            key-positions = <6 7 8 9>;
         };
     };
 
@@ -46,10 +53,10 @@
         function_layer {
             display-name = "Function Layer";
             bindings = <
-&bt BT_CLR_ALL  &trans    &bt BT_SEL 0    &bt BT_SEL 1  &tog 1    &trans   &trans    &trans    &trans  &trans
-&trans          &trans    &kp UP_ARROW    &trans        &tog 2    &trans   &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT
-&trans          &kp LEFT  &kp DOWN_ARROW  &kp RIGHT     &trans    &trans   &trans    &trans    &trans  &trans
-                                          &kp DEL       &none     &kp RET  &trans
+&bt BT_CLR_ALL  &none    &bt BT_SEL 0    &bt BT_SEL 1   &none     &none   &none    &none    &none  &none
+&none           &none    &kp UP_ARROW    &none          &none     &none   &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT
+&none           &kp LEFT  &kp DOWN_ARROW  &kp RIGHT     &none     &none   &none    &none    &none  &none
+                                          &kp DEL       &none     &kp RET  &none
             >;
         };
 
