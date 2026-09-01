@@ -30,6 +30,7 @@
         toggle_bt {
             bindings = <&tog 5>;
             key-positions = <30 31 32 33>;
+            timeout-ms = <80>; // split 2+2 master/slave: latenta BLE mananca din fereastra de 50ms
         };
     };
 
