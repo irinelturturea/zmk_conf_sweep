@@ -63,7 +63,8 @@
 &none           &none     &kp UP_ARROW    &none         &none    &none   &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT
 &none           &kp LEFT  &kp DOWN_ARROW  &kp RIGHT     &none    &none   &none    &none    &none  &none
                                           &kp DEL       &none    &kp RET  &none
-
+            >;
+        };
 
         symbol_layer {
             display-name = "Symbol Layer";
