@@ -37,6 +37,17 @@ NONE_SYM = "×"
 TRANS_SYM = "↓"
 MISSING = "<n/a>"          # marcaj intern pentru bindings nemapate (nu ajunge în document)
 
+# Note de intenție per layer (Irinel, 30.09.2026) — apar sub grila layerului.
+LAYER_NOTES = {
+    1: "**Intenționat:** layer 1 ține literele în aranjamentul **US** (QWERTY ca "
+       "usage-uri), nu în pozițiile Colemak-DH — pentru un host US sau software care "
+       "așteaptă US. Pe host german rezultă `q w e r t y u i o p`.",
+    3: "Simbolurile urmează aranjarea din **Neo2** (layerul **Mod3** al layout-ului "
+       "german ergonomic Neo), nu pozițiile AltGr ale unei tastaturi germane "
+       "obișnuite: simbolurile de programare stau pe rândul de sus, grupate după "
+       "frecvență. Umlautele (ä ö ü ß) sunt în layer 4.",
+}
+
 # ---------------------------------------------------------------------------
 # Tastă ZMK -> ce iese pe layout GERMAN (QWERTZ), pe poziția FIZICĂ a tastelor.
 # ZMK trimite usage-ul HID al tastelor US; Windows/Linux cu layout german
@@ -254,6 +265,14 @@ def hold_note(bindings) -> str | None:
     return "Ținut (hold): " + " · ".join(parts) if parts else None
 
 
+def md_inline(text: str) -> str:
+    """Markdown minimal (**bold**, `code`) -> HTML, escapând restul."""
+    out = html.escape(text)
+    out = re.sub(r"\*\*([^*]+)\*\*", r"<b>\1</b>", out)
+    out = re.sub(r"`([^`]+)`", r"<code>\1</code>", out)
+    return out
+
+
 def md_layer(idx, layer):
     chars = [c for c, _ in cells_of(layer["bindings"])]
     out = [f"## Layer {idx} — `{layer['id']}`", ""]
@@ -261,10 +280,11 @@ def md_layer(idx, layer):
         out += [f"*{layer['name']}*", ""]
     out += ["```", "", grid(chars, 4), ""]
     note = hold_note(layer["bindings"])
+    out += ["```", ""]
     if note:
-        out += ["```", "", note, ""]
-    else:
-        out += ["```", ""]
+        out += [note, ""]
+    if idx in LAYER_NOTES:
+        out += [LAYER_NOTES[idx], ""]
     return out
 
 
@@ -277,6 +297,8 @@ def html_layer(idx, layer):
     note = hold_note(layer["bindings"])
     if note:
         body.append(f"<p class=\"note\">{html.escape(note)}</p>")
+    if idx in LAYER_NOTES:
+        body.append(f"<p class=\"note\">{md_inline(LAYER_NOTES[idx])}</p>")
     return "\n".join(body)
 
 
@@ -389,15 +411,19 @@ def main():
     md += [f"| {a} | {b} |" for a, b in CAPCANE]
     md += [
         "",
-        "**Layer 1 (`qwertz`)** rescrie literele în ordinea Q W E R T Z U I O P ca poziții "
-        "fizice. Pe un host german iese `q w e r t y u i o p` — Z și Y sunt inversate "
-        "față de o tastatură germană fizică. În layer 0 swap-ul e aplicat corect "
-        "(`kp Z` dă `y`, `kp Y` dă `z`).",
+        "**Layer 1 (`qwertz`) e intenționat**: ține literele în aranjamentul **US** "
+        "(QWERTY ca usage-uri), nu în pozițiile Colemak-DH — pentru un host US sau "
+        "software care așteaptă US. Pe host german rezultă `q w e r t y u i o p`.",
+        "",
+        "**Simbolurile** din layer 3 urmează aranjarea din **Neo2** (layerul Mod3 al "
+        "layout-ului german ergonomic Neo), nu pozițiile AltGr ale unei tastaturi "
+        "germane obișnuite.",
         "",
         "## Surse",
         "",
         "- https://kbdlayout.info/KBDGR/ — layout-ul Windows de-DE",
         "- https://en.wikipedia.org/wiki/German_keyboard_layout — QWERTZ, umlaute, AltGr",
+        "- https://neo-layout.org/ — layout-ul Neo (Neo2): sursa aranjării layerului de simboluri",
         "- `config/cradio.keymap` — sursa de adevăr pentru bindings",
         "",
         "Regenerare (după orice modificare de keymap): `python3 tools/gen_cradio_layout_doc.py` "
@@ -456,10 +482,11 @@ def main():
         h.append(f"<tr><td><code>{html.escape(a.strip('`'))}</code></td><td>"
                  f"{html.escape(b.replace('**', ''))}</td></tr>")
     h.append("</table>")
-    h.append("<p class=\"note\">Layer 1 (<code>qwertz</code>) rescrie literele în ordinea "
-             "Q W E R T Z U I O P ca poziții fizice; pe host german iese "
-             "<code>q w e r t y u i o p</code> — Z și Y inversate față de o tastatură "
-             "germană fizică. În layer 0 swap-ul e aplicat corect.</p>")
+    h.append("<p class=\"note\">Layer 1 (<code>qwertz</code>) e intenționat: ține literele "
+             "în aranjamentul US (QWERTY ca usage-uri), nu în pozițiile Colemak-DH — pentru "
+             "un host US sau software care așteaptă US. Pe host german rezultă "
+             "<code>q w e r t y u i o p</code>. Simbolurile din layer 3 urmează aranjarea "
+             "din <b>Neo2</b> (layerul Mod3), nu pozițiile AltGr germane.</p>")
     h.append("<p class=\"note\">Surse: kbdlayout.info/KBDGR (Windows de-DE), "
              "en.wikipedia.org/wiki/German_keyboard_layout, <code>config/cradio.keymap</code>. "
              "Regenerare: <code>python3 tools/gen_cradio_layout_doc.py</code>.</p>")

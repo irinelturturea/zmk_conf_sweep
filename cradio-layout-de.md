@@ -68,6 +68,8 @@ Modificatorii ținuți (home-row mods) sunt pe linia *Ținut* de sub fiecare lay
 
 Ținut (hold): 20 LCtrl · 21 LGui · 22 LAlt · 23 LShft · 26 RShft · 27 RAlt · 28 RGui · 29 RCtrl · 30 L4 · 31 L2 · 32 L4 · 33 L3
 
+**Intenționat:** layer 1 ține literele în aranjamentul **US** (QWERTY ca usage-uri), nu în pozițiile Colemak-DH — pentru un host US sau software care așteaptă US. Pe host german rezultă `q w e r t y u i o p`.
+
 ---
 
 ## Layer 2 — `function_layer`
@@ -109,6 +111,8 @@ Modificatorii ținuți (home-row mods) sunt pe linia *Ținut* de sub fiecare lay
   └────┴────┴────┴────┘
 
 ```
+
+Simbolurile urmează aranjarea din **Neo2** (layerul **Mod3** al layout-ului german ergonomic Neo), nu pozițiile AltGr ale unei tastaturi germane obișnuite: simbolurile de programare stau pe rândul de sus, grupate după frecvență. Umlautele (ä ö ü ß) sunt în layer 4.
 
 ---
 
@@ -196,12 +200,15 @@ Modificatorii ținuți (home-row mods) sunt pe linia *Ținut* de sub fiecare lay
 | `kp RA(MINUS)` | **\\** |
 | `kp RA(NUBS)` | **|** |
 
-**Layer 1 (`qwertz`)** rescrie literele în ordinea Q W E R T Z U I O P ca poziții fizice. Pe un host german iese `q w e r t y u i o p` — Z și Y sunt inversate față de o tastatură germană fizică. În layer 0 swap-ul e aplicat corect (`kp Z` dă `y`, `kp Y` dă `z`).
+**Layer 1 (`qwertz`) e intenționat**: ține literele în aranjamentul **US** (QWERTY ca usage-uri), nu în pozițiile Colemak-DH — pentru un host US sau software care așteaptă US. Pe host german rezultă `q w e r t y u i o p`.
+
+**Simbolurile** din layer 3 urmează aranjarea din **Neo2** (layerul Mod3 al layout-ului german ergonomic Neo), nu pozițiile AltGr ale unei tastaturi germane obișnuite.
 
 ## Surse
 
 - https://kbdlayout.info/KBDGR/ — layout-ul Windows de-DE
 - https://en.wikipedia.org/wiki/German_keyboard_layout — QWERTZ, umlaute, AltGr
+- https://neo-layout.org/ — layout-ul Neo (Neo2): sursa aranjării layerului de simboluri
 - `config/cradio.keymap` — sursa de adevăr pentru bindings
 
 Regenerare (după orice modificare de keymap): `python3 tools/gen_cradio_layout_doc.py` — scrie și `cradio-layout-de.md`, și `cradio-layout-de.html` (pentru print/PDF).

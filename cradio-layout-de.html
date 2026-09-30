@@ -58,7 +58,8 @@ ul { margin: 0 0 6pt; padding-left: 14pt }
   ┌────┬────┬────┬────┐
   │Spc │Tab │Esc │Ent │
   └────┴────┴────┴────┘</pre>
-<p class="note">Ținut (hold): 20 LCtrl · 21 LGui · 22 LAlt · 23 LShft · 26 RShft · 27 RAlt · 28 RGui · 29 RCtrl · 30 L4 · 31 L2 · 32 L4 · 33 L3</p></div>
+<p class="note">Ținut (hold): 20 LCtrl · 21 LGui · 22 LAlt · 23 LShft · 26 RShft · 27 RAlt · 28 RGui · 29 RCtrl · 30 L4 · 31 L2 · 32 L4 · 33 L3</p>
+<p class="note"><b>Intenționat:</b> layer 1 ține literele în aranjamentul <b>US</b> (QWERTY ca usage-uri), nu în pozițiile Colemak-DH — pentru un host US sau software care așteaptă US. Pe host german rezultă <code>q w e r t y u i o p</code>.</p></div>
 <div class="layer"><h2>Layer 2 — function_layer</h2>
 <p class="sub">Function Layer</p>
 <pre>┌────┬────┬────┬────┬────┐  ┌────┬────┬────┬────┬────┐
@@ -82,7 +83,8 @@ ul { margin: 0 0 6pt; padding-left: 14pt }
 └────┴────┴────┴────┴────┘  └────┴────┴────┴────┴────┘
   ┌────┬────┬────┬────┐
   │ ↓  │ ↓  │ ↓  │ ×  │
-  └────┴────┴────┴────┘</pre></div>
+  └────┴────┴────┴────┘</pre>
+<p class="note">Simbolurile urmează aranjarea din <b>Neo2</b> (layerul <b>Mod3</b> al layout-ului german ergonomic Neo), nu pozițiile AltGr ale unei tastaturi germane obișnuite: simbolurile de programare stau pe rândul de sus, grupate după frecvență. Umlautele (ä ö ü ß) sunt în layer 4.</p></div>
 <div class="layer"><h2>Layer 4 — nr_layer</h2>
 <p class="sub">Number and F Layer</p>
 <pre>┌────┬────┬────┬────┬────┐  ┌────┬────┬────┬────┬────┐
@@ -141,7 +143,7 @@ ul { margin: 0 0 6pt; padding-left: 14pt }
 <tr><td><code>kp RA(MINUS)</code></td><td>\\</td></tr>
 <tr><td><code>kp RA(NUBS)</code></td><td>|</td></tr>
 </table>
-<p class="note">Layer 1 (<code>qwertz</code>) rescrie literele în ordinea Q W E R T Z U I O P ca poziții fizice; pe host german iese <code>q w e r t y u i o p</code> — Z și Y inversate față de o tastatură germană fizică. În layer 0 swap-ul e aplicat corect.</p>
+<p class="note">Layer 1 (<code>qwertz</code>) e intenționat: ține literele în aranjamentul US (QWERTY ca usage-uri), nu în pozițiile Colemak-DH — pentru un host US sau software care așteaptă US. Pe host german rezultă <code>q w e r t y u i o p</code>. Simbolurile din layer 3 urmează aranjarea din <b>Neo2</b> (layerul Mod3), nu pozițiile AltGr germane.</p>
 <p class="note">Surse: kbdlayout.info/KBDGR (Windows de-DE), en.wikipedia.org/wiki/German_keyboard_layout, <code>config/cradio.keymap</code>. Regenerare: <code>python3 tools/gen_cradio_layout_doc.py</code>.</p>
 </body>
 </html>
