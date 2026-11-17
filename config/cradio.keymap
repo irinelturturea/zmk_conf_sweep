@@ -6,8 +6,10 @@
 #include <dt-bindings/zmk/keys.h>
 
 &mt {
-    tapping-term-ms = <300>; // This is the value already set by default
+    tapping-term-ms = <200>; // 200 = acelasi prag ca &lt (stock ZMK), consistent peste tot
     flavor = "tap-preferred";
+    // roll-urile rapide (th, he) raman tap-uri; hold-ul cere 150ms de idle inainte
+    require-prior-idle-ms = <150>;
 };
 
 / {
